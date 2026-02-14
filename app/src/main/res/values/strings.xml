@@ -5,6 +5,15 @@
     <string name="collectibles">Coleccionables</string>
     <string name="title_about">Acerca de</string>
     <string name="text_about">Aplicación desarrollada por \n <b>Roberto Carlos Salvador Martin</b></string>
+
+    <!-- pantalla 1-->
+
     <string name="accept">Aceptar</string>
-    <string name="btn_comenzar">COMENZAR</string>
+    <string name="btn_iniciar">INICIAR</string>
+    <string name="pt_1_titulo1">BIENVENIDO</string>
+    <string name="pt1_titulo_2">Prepárate para una aventura mágica explorando el reino de los dragones</string>
+    <string name="pt1_descripcion">
+        Prepárate para explorar un mundo lleno de criaturas increíbles, escenarios mágicos y secretos escondidos en cada rincón.\n
+        Toca INICIAR y deja que nuestro pequeño dragón te guíe.
+    </string>
 </resources>

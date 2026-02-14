@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Fondo de la pantalla de bienvenida
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        PRIMERA CAPA (FONDO PRINCIPAL) Esta capa es la base del diseño.
+        Se dibuja primero y ocupa todo el espacio.
+    -->
+    <item>
+        <!-- Shape rectangular que servirá como fondo -->
+        <shape android:shape="rectangle">
+
+            <!--
+                Degradado principal.
+                startColor: color que aparece en la parte superior.
+                centerColor: color intermedio que suaviza la transición.
+                endColor: color final que aparece en la parte inferior.
+                angle=90: indica que el degradado va de arriba (start) hacia abajo (end).
+            -->
+            <gradient
+                android:startColor="#FFA000"
+                android:centerColor="#7209B7"
+                android:endColor="#3A0CA3"
+                android:angle="90"/>
+        </shape>
+    </item>
+
+    <!--
+        SEGUNDA CAPA (BRILLO SUPERIOR)
+        Esta capa se dibuja encima de la anterior.
+        Su propósito es crear un efecto de luz o brillo.
+        Al ser semitransparente, deja ver la capa inferior.
+    -->
+    <item>
+        <!-- Shape rectangular que actuará como capa de brillo -->
+        <shape android:shape="rectangle">
+
+            <!--
+                Degradado para el efecto de brillo.
+                startColor: blanco semitransparente (33 = 20% de opacidad).
+                endColor: completamente transparente.
+                angle=270: el degradado va de abajo hacia arriba.
+                Esto crea un brillo en la parte superior del botón.
+            -->
+            <gradient
+                android:startColor="#33FFFFFF"
+                android:endColor="#00FFFFFF"
+                android:angle="270"/>
+        </shape>
+    </item>
+
+</layer-list>

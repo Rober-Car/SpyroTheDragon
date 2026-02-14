@@ -1,31 +1,107 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@drawable/gide_pantalla_1_welcome">
+
+
+
 
     <TextView
         android:id="@+id/txt_1"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Texto1"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_marginTop="56dp"
+        android:gravity="center"
+        android:text="@string/pt_1_titulo1"
+        style="@style/TituloDragones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txt_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:gravity="center"
+            android:text="@string/pt1_titulo_2"
+            android:textColor="#DDFFFFFF" />
+
+
+    <ImageView
+        android:id="@+id/img_dragon"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/spyro"
+        app:layout_constraintTop_toBottomOf="@id/txt_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+
+    <ImageView
+        android:id="@+id/logo_spyro"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:src="@drawable/logo_spyro2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_dragon"
+        android:layout_marginTop="-20dp"
+
+        />
 
     <TextView
-        android:id="@+id/txt_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Texto2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_1" />
+            android:id="@+id/txt_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/logo_spyro"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:gravity="center"
+            android:text="@string/pt1_descripcion"
+            android:textColor="#DDFFFFFF" />
 
-    <Button
-        android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toBottomOf="@+id/txt_3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/dragon_eggs"
+            android:clickable="true"
+            android:focusable="true"/>
+
+
+
+
+    <TextView
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_2"
-        android:text="@string/btn_comenzar"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="130dp"
+        android:layout_gravity="center"
+        style="@style/boton_inciar"
+        android:text="@string/btn_iniciar"
+        android:gravity="center"/>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
