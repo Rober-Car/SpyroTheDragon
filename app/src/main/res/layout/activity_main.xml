@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <!-- NavHostFragment para manejar la navegación entre fragmentos -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navHostFragment"
@@ -26,5 +27,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
+
+    <!--
+             Esta vista será la capa SUPERPUESTA (overlay) del tutorial.
+             No sustituye la pantalla: simplemente se coloca ENCIMA de ella.
+
+             Fondo semitransparente (#88 = 50% de opacidad).
+             Esto oscurece la pantalla inferior para centrar la atención.
+
+             android:visibility="gone":
+             visible → se ve y ocupa espacio
+             invisible → no se ve, pero sigue ocupando espacio
+             gone → no se ve y además no ocupa espacio
+             Lo dejamos oculto al inicio. Solo se mostrará cuando el tutorial esté activo.
+
+               clickable + focusable = el overlay captura los toques.
+              Esto evita que el usuario toque elementos de debajo
+              mientras el tutorial está activo.
+              -->
+    <FrameLayout
+        android:id="@+id/overlayGuia"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#88000000"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,6 @@
     <string name="text_about">Aplicación desarrollada por \n <b>Roberto Carlos Salvador Martin</b></string>
 
     <!-- pantalla 1-->
-
     <string name="accept">Aceptar</string>
     <string name="btn_iniciar">INICIAR</string>
     <string name="pt_1_titulo1">BIENVENIDO</string>
@@ -15,5 +14,11 @@
     <string name="pt1_descripcion">
         Prepárate para explorar un mundo lleno de criaturas increíbles, escenarios mágicos y secretos escondidos en cada rincón.\n
         Toca INICIAR y deja que nuestro pequeño dragón te guíe.
+    </string>
+
+
+    <!-- pantalla 2-->
+    <string name="guide_personajes">
+        Aquí podrás explorar a todos los personajes del mundo de Spyro.
     </string>
 </resources>

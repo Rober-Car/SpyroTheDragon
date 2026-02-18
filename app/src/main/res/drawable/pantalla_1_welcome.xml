@@ -20,9 +20,9 @@
                 angle=90: indica que el degradado va de arriba (start) hacia abajo (end).
             -->
             <gradient
-                android:startColor="#FFA000"
-                android:centerColor="#7209B7"
-                android:endColor="#3A0CA3"
+                android:startColor="@color/purple_dark"
+                android:centerColor="@color/purple_mid"
+                android:endColor="@color/orange_gold"
                 android:angle="90"/>
         </shape>
     </item>

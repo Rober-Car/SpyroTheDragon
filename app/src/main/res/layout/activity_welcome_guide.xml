@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gide_pantalla_1_welcome">
+    android:background="@drawable/pantalla_1_welcome">
 
 
 
@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="120dp"
         android:layout_gravity="center"
         style="@style/boton_inciar"
         android:text="@string/btn_iniciar"

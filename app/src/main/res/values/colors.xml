@@ -7,4 +7,10 @@
     <color name="yellow2">#88ffffff</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="purple_dark">#3A0CA3</color>
+    <color name="purple_mid">#7209B7</color>
+    <color name="orange_gold">#FFA000</color>
+    <color name="gray_shadow">#202020</color>
+
+
 </resources>
