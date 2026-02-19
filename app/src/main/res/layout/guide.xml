@@ -1,0 +1,67 @@
+
+<!--
+
+         android:visibility="gone":
+         visible → se ve y ocupa espacio
+         invisible → no se ve, pero sigue ocupando espacio
+         gone → no se ve y además no ocupa espacio
+         Lo dejamos oculto al inicio. Solo se mostrará cuando el tutorial esté activo.
+
+           clickable + focusable = el overlay captura los toques.
+          Esto evita que el usuario toque elementos de debajo
+          mientras el tutorial está activo.
+          -->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#88000000"
+    android:clickable="true"
+    android:focusable="true"
+    android:id="@+id/guideLayout"
+
+    >
+
+
+
+    <ImageView
+        android:id="@+id/pulseImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="-80dp"
+        android:layout_marginTop="-70dp"
+        android:src="@drawable/boton_personajes_sign"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textStep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="50dp"
+        android:alpha="0"
+        android:background="@drawable/bocadillo_guia"
+        android:gravity="center"
+        android:maxLines="5"
+        android:padding="20dp"
+        android:text="@string/guide_personajes"
+        android:textColor="@color/white"
+        android:textSize="26sp" />
+
+    <android.widget.Button
+        android:id="@+id/exit_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/finalizar_gide"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="20dp"
+        android:padding="20dp"
+        android:textSize="20dp"
+        android:background="@android:color/transparent"
+        android:textAllCaps="false"
+        android:textColor="@color/purple_dark"/>
+
+
+</FrameLayout>

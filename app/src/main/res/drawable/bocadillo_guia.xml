@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!--
+        RELLENO DEL FONDO
+        Aquí defines el color interior del rectángulo.
+        En este caso usas tu color púrpura claro.
+    -->
+    <solid android:color="@color/purple_light"/>
+
+    <!--
+        BORDE DEL RECTÁNGULO
+        - width: grosor del borde
+        - color: color del borde (púrpura oscuro)
+    -->
+    <stroke
+        android:width="5dp"
+        android:color="@color/purple_dark"/>
+
+    <!--
+        ESQUINAS REDONDEADAS
+        - radius: cuanto se redondean todas las esquinas por igual.
+        150dp da un aspecto muy suave y redondeado.
+    -->
+    <corners android:radius="150dp"/>
+
+</shape>

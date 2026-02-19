@@ -17,8 +17,9 @@
     </string>
 
 
-    <!-- pantalla 2-->
+    <!-- guia-->
     <string name="guide_personajes">
         Aquí podrás explorar a todos los personajes del mundo de Spyro.
     </string>
+    <string name="finalizar_gide">Finalizar guía</string>
 </resources>

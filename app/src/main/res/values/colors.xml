@@ -9,8 +9,14 @@
     <color name="black">#000000</color>
     <color name="purple_dark">#3A0CA3</color>
     <color name="purple_mid">#7209B7</color>
+    <color name="purple_light">#A06CFF</color>
     <color name="orange_gold">#FFA000</color>
+    <color name="purple_dark_transparent">#773A0CA3</color>
+    <color name="purple_mid_transparent">#777209B7</color>
+    <color name="purple_light_transparent">#77A06CFF</color>
     <color name="gray_shadow">#202020</color>
+    <color name="transparent">#00000000</color>
+
 
 
 </resources>
