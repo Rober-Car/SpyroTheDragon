@@ -8,7 +8,7 @@
         Aquí defines el color interior del rectángulo.
         En este caso usas tu color púrpura claro.
     -->
-    <solid android:color="@color/purple_light"/>
+    <solid android:color="@color/purple_light_transparent"/>
 
     <!--
         BORDE DEL RECTÁNGULO

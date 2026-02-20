@@ -13,7 +13,6 @@
         <!-- Espaciado entre letras -->
         <item name="android:letterSpacing">0.05</item>
 
-
         <!-- Sombra del texto -->
         <item name="android:shadowColor">@color/gray_shadow</item>
         <item name="android:shadowDx">2</item>
@@ -33,6 +32,30 @@
         <item name="android:textStyle">bold</item>
 
     </style>
+
+    <style name="texto_pequeño_blanco" parent="TextAppearance.AppCompat">
+
+        <!-- Tamaño del texto -->
+        <item name="android:textSize">14sp</item>
+        !-- Color del texto -->
+        <item name="android:textColor">@color/white</item>
+        <!-- Negrita, cursiva, etc. -->
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <style name="texto_medio_blanco" parent="TextAppearance.AppCompat">
+
+        <!-- Tamaño del texto -->
+        <item name="android:textSize">22sp</item>
+        !-- Color del texto -->
+        <item name="android:textColor">@color/white</item>
+        <!-- Negrita, cursiva, etc. -->
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+
 
 
 </resources>

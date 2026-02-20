@@ -19,7 +19,22 @@
 
     <!-- guia-->
     <string name="guide_personajes">
-        Aquí podrás explorar a todos los personajes del mundo de Spyro.
+        Aquí podrás explorar a todos los personajes del mundo de Spyro.\n\n
+        Pulsa aqui para continuar.
     </string>
+
+    <string name="guide_mundos">
+        Aquí podrás explorar todos los mundos mágicos del universo Spyro.\n\n
+        Pulsa aqui para continuar."
+    </string>
+    <string name="guide_coleccionables">
+        Aquí podrás explorar todos los objetos colecionables  del universo Spyro.\n\n
+        Pulsa aqui para continuar."
+    </string>
+
+    <string name="guide_acerca_de">
+        Información del Producto y Autoría.
+    </string>
+
     <string name="finalizar_gide">Finalizar guía</string>
 </resources>
