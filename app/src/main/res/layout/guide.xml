@@ -69,4 +69,14 @@
         android:textAllCaps="false"
         style="@style/texto_medio_blanco" />
 
+    <ImageView
+        android:id="@+id/arrowInfo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="-15dp"
+        android:layout_marginEnd="5dp"
+        android:src="@drawable/flecha_acerca_de"
+        android:visibility="gone"/>
+
 </FrameLayout>

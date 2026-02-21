@@ -3,12 +3,11 @@ package dam.pmdm.spyrothedragon
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
-import android.content.Intent
+import android.media.SoundPool
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -36,37 +35,87 @@ class MainActivity : AppCompatActivity() {
 
     private var circleAnimator: AnimatorSet? = null
 
+    // Declaración de SoundPool para reproducir efectos de sonido
+    private lateinit var soundPool: SoundPool
+
+    // ID del sonido del bocadillo cargado en SoundPool
+    private var soundBocadillo = 0
+
+    // ID del sonido de fin de guía cargado en SoundPool
+    private var soundFinGuia = 0
+
+    // Contador de clics realizados por el usuario
+    private var clickCount = 0
+
+    // Tiempo (en milisegundos) del último clic registrado
+    private var lastClickTime = 0L
+
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
         // AÑADIDOS DE LA TAREA
-
-
-
 
         // inicializacion del binding de guia.xml
         guideBinding = binding.includeLayout
 
 
-        //Esta instrucción cambia el estado de visibilidad de una vista
-        //View.VISIBLE: Es una constante que le dice al sistema:
-        // "Dibuja este elemento en pantalla y que ocupe su espacio correspondiente"
-        guideBinding.guideLayout.visibility = View.VISIBLE
-        startGuideAnimation()
+        if (shouldShowGuide()) {
+
+            // Si la función indica que la guía debe mostrarse (por ejemplo,
+            // porque es la primera vez que el usuario abre la app),
+            // hacemos visible el layout del tutorial.
+            guideBinding.guideLayout.visibility = View.VISIBLE
+
+            // Iniciamos la animación o secuencia de pasos del tutorial.
+            // Normalmente aquí empieza el paso 1 o la primera animación.
+            startGuideAnimation()
+
+
+        } else {
+
+            // Si la guía NO debe mostrarse (porque ya se completó antes),
+            // ocultamos el layout para que no aparezca en pantalla.
+            guideBinding.guideLayout.visibility = View.GONE
+        }
+
+        // Configuración de los atributos de audio para efectos de sonido tipo juego
+        val audioAttributes = android.media.AudioAttributes.Builder()
+            .setUsage(android.media.AudioAttributes.USAGE_GAME)                 // Uso orientado a juegos
+            .setContentType(android.media.AudioAttributes.CONTENT_TYPE_SONIFICATION) // Sonidos cortos tipo efecto
+            .build()
+
+        // Inicialización del SoundPool con un máximo de 3 sonidos simultáneos
+        soundPool = SoundPool.Builder()
+            .setMaxStreams(3)
+            .setAudioAttributes(audioAttributes)
+            .build()
+
+        // Carga de los sonidos desde res/raw (asegúrate de que los nombres estén en minúsculas)
+        soundBocadillo = soundPool.load(this, R.raw.bocadillo_sound, 1)
+        soundFinGuia = soundPool.load(this, R.raw.fin_guia_sound, 1)
+
+
 
         guideBinding.textBocadillo.setOnClickListener {
             nextGuideStep()
+            bocadilloSound()
         }
 
         guideBinding.exitGuide.setOnClickListener {
 
             finishGuide()
+            finGuiaSound()
         }
 
-        // AÑADIDOS DE LA TAREA
+        // FIN AÑADIDOS DE LA TAREA
 
 
         val navHostFragment: Fragment? =
@@ -77,7 +126,7 @@ class MainActivity : AppCompatActivity() {
 
             NavigationUI.setupWithNavController(binding.navView, navController!!)
             NavigationUI.setupActionBarWithNavController(this, navController!!)
-        
+
         }
 
         binding.navView.setOnItemSelectedListener { menuItem ->
@@ -98,6 +147,14 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 }
             }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Solo intenta liberarlo si realmente fue inicializado
+        if (::soundPool.isInitialized) {
+            soundPool.release()
         }
     }
 
@@ -154,7 +211,7 @@ class MainActivity : AppCompatActivity() {
         scaleY.repeatMode = ValueAnimator.REVERSE
 
         // Agrupamos las escalas del icono para que ocurran exactamente al mismo tiempo
-         circleAnimator = AnimatorSet()
+        circleAnimator = AnimatorSet()
         circleAnimator?.playTogether(scaleX, scaleY)
         circleAnimator?.duration = 800
         circleAnimator?.start()
@@ -246,36 +303,115 @@ class MainActivity : AppCompatActivity() {
 
             3 -> {
 
-                // Cambia el texto del bocadillo para explicar la sección "información"
+                // Cambiamos el texto del bocadillo por el mensaje "Acerca de"
                 guideBinding.textBocadillo.text =
                     getString(R.string.guide_acerca_de)
 
-                // Coloca el pulso en la parte inferior derecha del BottomNavigation
-                params.gravity = Gravity.TOP or Gravity.END
+                // Ocultamos la animación de "pulso" porque en este paso no se usa
+                guideBinding.pulseImage.visibility = View.GONE
 
-                // Ajusta la altura del pulso para que quede alineado visualmente
-                params.topMargin = -120
+                // Mostramos la flecha que indica información adicional
+                guideBinding.arrowInfo.visibility = View.VISIBLE
 
-                guideBinding.pulseImage.translationX = -25f
+                // Creamos una animación vertical suave tipo rebote
+                val translate = ObjectAnimator.ofFloat(
+                    guideBinding.arrowInfo,   // Vista a animar
+                    "translationY",           // Propiedad que cambia
+                    0f,                       // Posición inicial
+                    20f                       // Posición final (baja 20px)
+                )
 
-                // Aplica los nuevos parámetros al icono de pulso
-                guideBinding.pulseImage.layoutParams = params
+                // La animación se repetirá infinitamente
+                translate.repeatCount = ValueAnimator.INFINITE
+
+                // Cuando llegue al final, vuelve hacia atrás (efecto rebote)
+                translate.repeatMode = ValueAnimator.REVERSE
+
+                // Duración de cada ciclo de animación (0.6 segundos)
+                translate.duration = 600
+
+                // Iniciamos la animación
+                translate.start()
             }
+
         }
     }
 
 
-    // 🔚 Paso final → Ocultar la guía
-// Cuando ya no hay más pasos, se oculta el overlay del tutorial
+    //  Paso final → Ocultar la guía
+    // Cuando ya no hay más pasos, se oculta el overlay del tutorial
     private fun finishGuide() {
 
-        //Detener animaciones del círculo
+        // Ocultamos la flecha de información
+        guideBinding.arrowInfo.visibility = View.GONE
+
+        // Mostramos de nuevo la imagen de pulso (estado inicial)
+        guideBinding.pulseImage.visibility = View.VISIBLE
+
+        // Detenemos la animación del círculo si estaba activa
         circleAnimator?.cancel()
-        // Oculta completamente el layout del tutorial
+
+        // Ocultamos por completo el layout del tutorial
         guideBinding.guideLayout.visibility = View.GONE
-        //resetear el contador
+
+        // Reiniciamos el contador de pasos para empezar desde cero
         guideStep = 0
+
+        // Guardamos que la guía ya se completó
+        //LO PONGO EN COMETARIOS PARA PODER HACE RPRUEBAS
+
+
+        ///saveGuideCompleted()
     }
+
+    // Guarda en las preferencias que el usuario ya ha completado la guía/tutorial
+    private fun saveGuideCompleted() {
+
+        // Accedemos al archivo de preferencias de la app.
+        // "app_prefs" es el nombre del archivo donde guardamos valores persistentes.
+        // MODE_PRIVATE significa que solo tu app puede leer este archivo.
+        val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+
+        // Editamos las preferencias para guardar un valor booleano.
+        // "guide_completed" será la clave que usaremos para saber si el tutorial ya se mostró.
+        // Guardamos 'true' para indicar que el usuario ya lo completó.
+        // apply() guarda los cambios de forma asíncrona (más eficiente que commit()).
+        prefs.edit().putBoolean("guide_completed", true).apply()
+    }
+
+    // Determina si se debe mostrar la guía/tutorial
+    private fun shouldShowGuide(): Boolean {
+
+        //  Accedemos al archivo de preferencias llamado "app_prefs".
+        // Si no existe, Android lo crea automáticamente.
+        // MODE_PRIVATE significa que solo tu app puede leer este archivo.
+        val prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+
+        // Leemos el valor booleano guardado bajo la clave "guide_completed".
+        // - Si existe y es true → el usuario ya completó la guía.
+        // - Si no existe → devuelve el valor por defecto (false).
+        //
+        // Como queremos saber si DEBEMOS mostrar la guía,
+        // devolvemos el valor negado:
+        //   - Si guide_completed = true  → !true  = false  → NO mostrar guía
+        //   - Si guide_completed = false → !false = true   → SÍ mostrar guía
+        return !prefs.getBoolean("guide_completed", false)
+    }
+
+
+    // Reproduce el sonido del bocadillo usando SoundPool
+    private fun bocadilloSound() {
+        // play(idSonido, volumenIzq, volumenDer, prioridad, loop, velocidad)
+        soundPool.play(soundBocadillo, 1f, 1f, 1, 0, 1f)
+    }
+
+    // Reproduce el sonido de fin de guía usando SoundPool
+    private fun finGuiaSound() {
+        soundPool.play(soundFinGuia, 1f, 1f, 1, 0, 1f)
+    }
+
+
+
 }
 
 

@@ -34,7 +34,13 @@ class CharactersFragment : Fragment() {
 
         recyclerView = binding.recyclerViewCharacters
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = CharactersAdapter(charactersList)
+        adapter = CharactersAdapter(charactersList) { character ->
+
+            if (character.name == "Ripto") {
+                activarEasterEgg()
+            }
+
+        }
         recyclerView.adapter = adapter
 
         loadCharacters()

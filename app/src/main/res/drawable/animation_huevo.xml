@@ -4,7 +4,7 @@
 
     <item
         android:drawable="@drawable/huevo_fase0"
-        android:duration="100"/>
+        android:duration="200"/>
 
     <item
         android:drawable="@drawable/huevo_b"
