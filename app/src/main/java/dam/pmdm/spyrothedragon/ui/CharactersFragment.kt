@@ -32,12 +32,17 @@ class CharactersFragment : Fragment() {
 
         _binding = FragmentCharactersBinding.inflate(inflater, container, false)
 
+        binding.riptoOverlay.root.setOnClickListener {
+            binding.riptoOverlay.root.visibility = View.GONE
+       }
+
         recyclerView = binding.recyclerViewCharacters
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter = CharactersAdapter(charactersList) { character ->
 
             if (character.name == "Ripto") {
-                activarEasterEgg()
+
+               binding.riptoOverlay.root.visibility = View.VISIBLE
             }
 
         }

@@ -7,10 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import dam.pmdm.spyrothedragon.R
+import dam.pmdm.spyrothedragon.models.Character
 import dam.pmdm.spyrothedragon.models.World
 
 class WorldsAdapter(
-    private val list: List<World>
+    private val list: List<World>,
+    private val onTripleClick: (Int) -> Unit
 ) : RecyclerView.Adapter<WorldsAdapter.WorldsViewHolder>() {
 
     private val worldImages = mapOf(
@@ -37,6 +39,13 @@ class WorldsAdapter(
 
         val drawableRes = worldImages[world.image] ?: R.drawable.placeholder
         holder.imageImageView.setImageResource(drawableRes)
+
+        // En onBindViewHolder del WorldsAdapter
+        holder.itemView.setOnClickListener {
+            // Solo avisamos que se hizo clic en esta posición
+            onTripleClick(position)
+        }
+
     }
 
     override fun getItemCount(): Int = list.size

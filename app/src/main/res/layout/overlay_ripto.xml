@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    FrameLayout que actúa como un overlay (capa) encima de toda la pantalla.
+    Se usa para mostrar la animación de Ripto cuando tú decidas.
+-->
+
+<FrameLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#000000"
+android:visibility="gone"
+android:clickable="true"
+android:focusable="true">
+    <!--
+    Vista personalizada donde se dibuja la animación:
+    brillo, ondas y el sprite de Ripto.
+    Ocupa toda la pantalla.
+-->
+
+
+    <dam.pmdm.spyrothedragon.ui.RiptoAnimation
+    android:id="@+id/riptoAnimationView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+
+</FrameLayout>

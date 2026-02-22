@@ -105,8 +105,16 @@ class MainActivity : AppCompatActivity() {
 
 
         guideBinding.textBocadillo.setOnClickListener {
+
+            val pulsoFinal = getString(R.string.guide_acerca_de)
+
+            if (pulsoFinal!= guideBinding.textBocadillo.text.toString()){
+
+                bocadilloSound()
+            }
             nextGuideStep()
-            bocadilloSound()
+
+
         }
 
         guideBinding.exitGuide.setOnClickListener {
@@ -236,8 +244,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    // Avanza al siguiente paso del tutorial
-    // Avanza al siguiente paso del tutorial
+
     // Avanza al siguiente paso del tutorial
     // Avanza al siguiente paso del tutorial y actualiza la posición del pulso y el texto
     private fun nextGuideStep() {
@@ -357,11 +364,12 @@ class MainActivity : AppCompatActivity() {
         // Reiniciamos el contador de pasos para empezar desde cero
         guideStep = 0
 
+
+        navController?.navigate(R.id.navigation_characters)
         // Guardamos que la guía ya se completó
-        //LO PONGO EN COMETARIOS PARA PODER HACE RPRUEBAS
 
 
-        ///saveGuideCompleted()
+       // saveGuideCompleted()
     }
 
     // Guarda en las preferencias que el usuario ya ha completado la guía/tutorial
