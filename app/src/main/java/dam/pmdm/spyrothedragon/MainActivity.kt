@@ -369,7 +369,7 @@ class MainActivity : AppCompatActivity() {
         // Guardamos que la guía ya se completó
 
 
-       // saveGuideCompleted()
+        saveGuideCompleted()
     }
 
     // Guarda en las preferencias que el usuario ya ha completado la guía/tutorial
