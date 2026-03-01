@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Layout para la pantalla del "Easter Egg" (huevo de pascua).
+    Utiliza un FrameLayout con fondo negro para centrar el reproductor de vídeo.
+-->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black">
 
+    <!-- 
+        VideoView para la reproducción del contenido oculto.
+        Se ajusta al ancho de la pantalla y se centra verticalmente.
+    -->
     <VideoView
         android:id="@+id/videoViewEaster"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
+
 </FrameLayout>

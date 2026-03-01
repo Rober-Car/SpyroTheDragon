@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Fondo para los botones de navegación o acciones. 
+    Define una forma ovalada con un color púrpura translúcido y dimensiones fijas.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    
+    <!-- Color de relleno del círculo (púrpura con transparencia) -->
+    <solid android:color="@color/purple_light_transparent" />
+    
+    <!-- Tamaño predefinido para mantener la proporción circular de 50x50 dp -->
+    <size
+        android:width="50dp"
+        android:height="50dp" />
+</shape>
